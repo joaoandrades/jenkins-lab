@@ -2,9 +2,11 @@ pipeline {
     agent any
 
     stages {
-        stage ('Inicial') {
+        stage ('Build image') {
             steps {
-                echo 'Iniciando a pipeline'
+                script{
+                    dockerapp = docker.build("jonnyff/nodejenkins", '-f ./src/dockerfile ./src')
+                }
             }
         }
     }
