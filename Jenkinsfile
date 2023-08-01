@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    slackSend "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+
     stages {
         stage('Build') {
             steps {
@@ -17,5 +17,10 @@ pipeline {
                 echo 'Deploying....'
             }
         }
+        post {
+            success {
+                slackSend "Build deployed successfully - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+            }
+        }
     }
-  }
+}
