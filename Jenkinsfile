@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Compile') {
           steps {
-                  echo "teste"
+                  echo "teste" asasd
             }
         }
         /* ... other stages ... */
