@@ -1,26 +1,19 @@
 pipeline {
     agent any
-
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
+        stage('Compile') {
+           steps {
+                echo "teste"
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
+        /* ... other stages ... */
+    }
+    post {
+        success {
+            slackSend "Build deployed successfully - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-        post {
-            success {
-                slackSend "Build deployed successfully - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
-            }
+        failure {
+            slackSend failOnError:true message:"Build failed  - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
         }
     }
 }
