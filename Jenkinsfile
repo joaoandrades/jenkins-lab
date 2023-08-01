@@ -3,7 +3,9 @@ pipeline {
     stages {
         stage('Compile') {
           steps {
-                  echo "teste" asasd
+              script{
+                sh "echo "teste" asasd"
+                }
             }
         }
         /* ... other stages ... */
