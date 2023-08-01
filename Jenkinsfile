@@ -4,7 +4,7 @@ pipeline {
         stage('Compile') {
           steps {
               script{
-                sh "echo "teste" asasd"
+                sh "echo 'falha' asasd"
                 }
             }
         }
