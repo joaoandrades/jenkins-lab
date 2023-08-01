@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('Compile') {
            steps {
+                slackSend channel: "outros-assuntos", message: "Build deployed start - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
                 echo "teste"
             }
         }
