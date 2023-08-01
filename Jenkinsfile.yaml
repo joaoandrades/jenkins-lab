@@ -7,4 +7,4 @@ pipeline:
         - echo "1"
     - stage: "Stage2"
       steps:
-        - echo "slack teste"
+        - echo "slack teste" ijijijijijijyhyh
