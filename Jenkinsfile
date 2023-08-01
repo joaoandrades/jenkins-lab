@@ -4,10 +4,12 @@ pipeline {
         stage('Compile') {
           steps {
                 slackSend channel: "outros-assuntos", message: "Build deployed start - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
-                echo "teste" asdasdads 
+                catchError {
+                  echo "teste" asdasdads 
+                }
             }
-          post{
-            failure{
+          post {
+            failure {
                 slackSend channel: "outros-assuntos", failOnError: true, message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
               }
             }
